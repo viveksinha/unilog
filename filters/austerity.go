@@ -11,7 +11,12 @@ import (
 
 var startSystemAusterityLevel sync.Once
 
-// AusterityFilter applies system-wide austerity levels to a log line. If austerity levels indicate a line should be shedded, the
+// AusterityFilter applies system-wide austerity levels to a log
+// line. If austerity levels indicate a line should be shedded, the
+// like's contents will replaced with "(shedded)" in text mode and the
+// "shedded"=true attribude in JSON mode.
+//
+// Shedding log lines retains their time stamps.
 type AusterityFilter struct{}
 
 // Setup starts the parser for the system austerity level. It is
